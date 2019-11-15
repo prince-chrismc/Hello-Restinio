@@ -3,7 +3,7 @@ restinio/0.6.0.1@stiffstream/stable
 OpenSSL/1.1.1c@conan/stable
 
 [generators]
-cmake
+cmake_find_package
 
 [options]
 
