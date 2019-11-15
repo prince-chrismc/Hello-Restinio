@@ -8,7 +8,7 @@ conan_basic_setup()
 find_package(restinio CONFIG REQUIRED)
 find_package(fmt CONFIG REQUIRED)
 
-add_executable(hello-world-https main.cpp)
+add_executable(hello-world-https src/main.cpp)
 
 target_link_libraries(hello-world-https restinio::restinio)
 target_link_libraries(hello-world-https ${CONAN_LIBS})
