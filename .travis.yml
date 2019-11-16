@@ -1,0 +1,23 @@
+language: cpp
+
+cache:
+  directories:
+    - "/home/travis/.conan"
+
+matrix:
+  include:
+    - os: linux
+      dist: bionic
+      addons:
+        hosts: https.testserver.lan
+
+install:
+  - ./ci/setup-conan.sh
+
+script:
+  - ./ci/build.sh
+
+notifications:
+  slack:
+    secure: DyC2E6wBNP+xgiXaU5shidrZTPNCZw1v6w1ga9esORojZsgPmvC1D1CRn26DsgOlHhHgcc42YWXpdjVJLQ2HdZ9eVEraaR5Hap0x4AHJv3sDMf6yy5Jrmd62hOnpy6lMq15ntdEMqF3SJGZxAVa5wSRCnExvH95a9ATGlCawPuoNuZ5WQuE25bmZJagkWsQXbjtBOm5VEn5J06IhTsrCkb3/hCL+zAQVTM+KFnScfq8VZ+ZtRdY9nQ+lqMaG/k0cFvtPHHfUNqETuT4A8Ub5bHnVCmzBYZTPCwCTt7srirx+GvdmeRxZkv58wAhxm0N2E9MCq6Rxf+avFFXMZEZG0mjpa6MXkGfwWSlGx5Ms+KM5b3QgpfXgPzdLKXrrOGum0v7KVKlVUMipVW3vCDNTHBC1yfIn8X9etF7pCgMUURKEesFj0VzJ9oJcdVnP/+KjzTOSemk7UMoRbZgbpgCCf82Oy1ys5krXv9sDYKG1F2RhBQnblpUcG+GNzbzoKBuCE0BiERyHI4NRz1yH1kRWuNjRqhie7IjHMKBKl5n6nm8wBXyPx/3FtzhqopV7HQFV/tgad7sgRatscZnVZBI0NmmsRGxU7CPDucd4MJB9ARSuyJvZOrTVwR0FKxc0EdOffwrmL2mqTJjwV6HscaTxgjZpEZwerJNVFkZPrObiFHo=
+  email: false
