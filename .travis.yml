@@ -1,5 +1,8 @@
 language: cpp
 
+services:
+  - docker
+
 cache:
   directories:
     - "/home/travis/.conan"
@@ -9,7 +12,7 @@ matrix:
     - os: linux
       dist: bionic
       addons:
-        hosts: https.testserver.lan
+        hosts: secure.restinio.lan
         apt:
           packages:
           - python3
@@ -21,6 +24,9 @@ install:
 
 script:
   - ./ci/build.sh
+  - docker run -d -p="8443:8443" -v="$(pwd)/build/hello-world-https:/home/restinio/hello-world-https" --entrypoint="/home/restinio/hello-world-https" ubuntu:18.04
+  - curl -k https://secure.restinio.lan:8443/html
+  - docker kill $(docker ps -q)
 
 notifications:
   slack:
