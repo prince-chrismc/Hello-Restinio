@@ -88,7 +88,7 @@ int main(int argc, const char *argv[]) {
     tls_context.use_tmp_dh_file(certs_dir + "/dh2048.pem");
 
     restinio::run(restinio::on_this_thread<traits_t>()
-                      .address("localhost")
+                      .address("0.0.0.0")
                       .port(8443)
                       .request_handler(server_handler())
                       .read_next_http_message_timelimit(10s)
