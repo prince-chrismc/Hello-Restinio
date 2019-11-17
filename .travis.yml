@@ -24,7 +24,10 @@ install:
 
 script:
   - ./ci/build.sh
-  - docker run -d -p="8443:8443" -v="$(pwd)/build/hello-world-https:/home/restinio/hello-world-https" --entrypoint="/home/restinio/hello-world-https" ubuntu:18.04
+  - docker run -it -p="8443:8443" \
+      -v="$(pwd)/build/hello-world-https:/home/restinio/hello-world-https" \
+      -v="$(pwd)/certs:/home/restinio/certs" --entrypoint="/home/restinio/hello-world-https" \
+      ubuntu:18.04 /home/restinio/certs
   - curl -k https://secure.restinio.lan:8443/html
   - docker kill $(docker ps -q)
 
