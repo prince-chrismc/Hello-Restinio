@@ -5,7 +5,7 @@ restinio/0.6.1@stiffstream/stable
 cmake_find_package
 
 [options]
-restinio:use_openssl=true
+restinio:use_openssl=True
 
 [imports]
 bin, *.dll -> ./bin # Copies all dll files from packages bin folder to my "bin" folder
